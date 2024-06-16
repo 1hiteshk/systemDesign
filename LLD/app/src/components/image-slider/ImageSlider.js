@@ -10,21 +10,25 @@ const ImageSlider = () => {
   ];
   const [active, setActive] = useState(0);
 
+  // to change bg image after every 3 seconds
   useEffect(() => {
     const i = setInterval(() => {
       loadNextImage();
     }, 3000);
 
+    // always remove event listeners and setTImeout intervals ,i.e repetitive thing
+    // remove them whenever we are unloading our page (in SPA or in react we have to do this) whenever we are going away from our page
+    // don't need to do this in js coz of single pager app.n
     return () => {
-      clearInterval(i);
+      clearInterval(i); // when component unmounts from the page
     };
   }, []);
 
   const loadNextImage = () => {
-    setActive((active) => (active + 1) % images.length);
+    setActive((active) => (active + 1) % images.length); // when last image so use modular 2%5 === 2
   };
   const loadPrevImage = () => {
-    setActive((active) => (active - 1 < 0 ? images.length - 1 : active - 1));
+    setActive((active) => (active - 1 < 0 ? images.length - 1 : active - 1)); //first img to prev. so its last img
   };
 
   return (
@@ -34,9 +38,13 @@ const ImageSlider = () => {
           onClick={loadPrevImage}
           className="w-20 h-20 cursor-pointer"
           alt="left arrow"
-          src="https://cdn0.iconfinder.com/data/icons/glyphpack/26/nav-arrow-left-512.png"
+          src="https://cdn-icons-png.flaticon.com/512/271/271220.png"
         />
-        <img className="w-[800px]" src={images[active]} alt="wallpaper" />
+        <img
+          className="w-[700px] h-[400px]"
+          src={images[active]}
+          alt="wallpaper"
+        />
         <img
           onClick={loadNextImage}
           className="w-20 h-20 cursor-pointer"

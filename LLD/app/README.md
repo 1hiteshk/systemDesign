@@ -16,13 +16,13 @@ this means we have reached the end of the page , it gives true otherwise false
 in useEffect,    return () => window.removeEventListener("scroll", handleScroll);
 
  //scrollY - how much I have scrolled
- // innerHeight - heigh of the window(visible setion)
+ // innerHeight - heigh of the window(visible section)
  // document.body.scrollHeight - total height of the web page
  // used for infinite scroll
 
 const handleScroll = () => {
     //scrollY - how much I have scrolled
-    // innerHeight - heigh of the window(visible setion)
+    // innerHeight - heigh of the window(visible section)
     // document.body.scrollHeight - total height of the web page
     // used for infinite scroll
     if (window.scrollY + window.innerHeight >= document.body.scrollHeight) {

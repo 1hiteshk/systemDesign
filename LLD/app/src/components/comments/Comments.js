@@ -73,7 +73,7 @@ const data = [
 
 const Comments = () => {
   return (
-    <div>
+    <div className="gap-1">
       <CommentBox data={data} />
     </div>
   );
