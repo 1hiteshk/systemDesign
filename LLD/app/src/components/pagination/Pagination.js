@@ -12,7 +12,9 @@ const Pagination = () => {
     fetchProducts();
   }, [currentPage]);
 
+  // we have to call this function as soon as the page loads, so call it in useEffect
   const fetchProducts = async () => {
+    // COUNT and SKIP should be dynamic
     const data = await fetch(
       `https://dummyjson.com/products?limit=${LIMIT}&skip=${
         currentPage * LIMIT
@@ -28,7 +30,7 @@ const Pagination = () => {
     <div>
       <div className="flex flex-wrap">
         {products.map((product) => (
-          <ProductCard key={product.id} {...product} />
+          <ProductCard key={product.id}  {...product} />
         ))}
       </div>
       <div className="p-10 cursor-pointer">
@@ -43,10 +45,10 @@ const Pagination = () => {
         )}
         {[...Array(noOfPages).keys()].map((pN) => (
           <span
+            key={pN}
             className={
               "text-xl p-4 " + (pN === currentPage && "font-bold underline")
             }
-            key={pN}
             onClick={() => {
               setCurrentPage(pN);
             }}
